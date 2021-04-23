@@ -1,0 +1,30 @@
+---
+- name: Remove unused container images daily
+  ansible.builtin.cron:
+    name: "remove unused container images"
+    special_time: daily
+    job: "sudo k3s crictl rmi --prune"
+
+- name: Remove tmp files that have not been accessed for 7 days daily
+  ansible.builtin.cron:
+    name: "remove old tmp files"
+    special_time: daily
+    job: "sudo find /tmp -type f -atime +7 -delete"
+
+- name: Remove compressed logs daily
+  ansible.builtin.cron:
+    name: "remove compressed logs"
+    special_time: daily
+    job: "sudo find /var/log -type f -regex \".*\\.gz$\" -delete"
+
+- name: Remove rotated logs daily
+  ansible.builtin.cron:
+    name: "remove rotated logs"
+    special_time: daily
+    job: "sudo find /var/log -type f -regex \".*\\.[0-9]$\" -delete"
+
+- name: Upgrade packages weekly
+  ansible.builtin.cron:
+    name: "upgrade packages"
+    special_time: weekly
+    job: "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"

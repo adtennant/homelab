@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virgin-media-exporter
+  labels:
+    app: virgin-media-exporter
+spec:
+  type: ClusterIP
+  selector:
+    app: virgin-media-exporter
+  ports:
+    - name: http
+      port: 8081
+      protocol: TCP
+      targetPort: http

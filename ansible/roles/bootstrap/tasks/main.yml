@@ -1,0 +1,14 @@
+---
+- name: Install FluxCD
+  shell:
+    cmd: kubectl apply -f https://raw.githubusercontent.com/adtennant/homelab/master/k8s/base/flux-system/gotk-components.yaml
+
+- name: Bootstrap homelab
+  shell:
+    cmd: kubectl apply -f https://raw.githubusercontent.com/adtennant/homelab/master/k8s/base/flux-system/gotk-sync.yaml
+
+- name: Configure in-cluster secrets decryption
+  shell:
+    cmd: echo "{{ gpg_secret_key }}" | kubectl create secret generic sops-gpg
+      --namespace=flux-system
+      --from-file=sops.asc=/dev/stdin

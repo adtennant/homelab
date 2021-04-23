@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: onghorn
+  resources:
+    requests:
+      storage: 10Gi

@@ -1,0 +1,9 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: octopus-consumption
+resources:
+  - cronjob.yaml
+  - namespace.yaml
+  - meter-points.enc.yaml
+  - octopus-api-key.enc.yaml

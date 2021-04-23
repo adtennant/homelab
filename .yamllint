@@ -1,0 +1,13 @@
+---
+ignore: |
+  *.enc.yaml
+  k8s/base/flux-system/gotk-components.yaml
+
+extends: default
+
+rules:
+  comments:
+    min-spaces-from-content: 1
+  line-length: disable
+  truthy:
+    allowed-values: ["true", "false", "yes", "no"]

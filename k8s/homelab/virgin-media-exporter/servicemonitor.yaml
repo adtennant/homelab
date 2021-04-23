@@ -1,0 +1,13 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: virgin-media-exporter
+spec:
+  endpoints:
+    - interval: 5m
+      path: /metrics
+      port: http
+  selector:
+    matchLabels:
+      app: virgin-media-exporter
