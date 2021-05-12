@@ -10,6 +10,6 @@ patchesStrategicMerge:
   - deployment.patch.yaml
 resources:
   # renovate
-  - github.com/kubernetes-sigs/external-dns/kustomize?ref=v0.7.6
+  - github.com/kubernetes-sigs/external-dns/kustomize?ref=v0.8.0
   - namespace.yaml
   - secret.enc.yaml
