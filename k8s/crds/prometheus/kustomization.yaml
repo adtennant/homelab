@@ -4,5 +4,5 @@ kind: Kustomization
 namespace: prometheus
 bases:
   # renovate
-  - https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.47.1/bundle.yaml
+  - https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.49.0/bundle.yaml
   - namespace.yaml
