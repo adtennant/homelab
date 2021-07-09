@@ -4,6 +4,6 @@ kind: Kustomization
 namespace: metallb-system
 resources:
   # renovate
-  - github.com/metallb/metallb//manifests?ref=v0.9.6
+  - github.com/metallb/metallb//manifests?ref=v0.10.2
   - configmap.yaml
   - secret.enc.yaml
