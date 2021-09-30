@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: system-upgrade
 bases:
   # renovate
-  - https://github.com/rancher/system-upgrade-controller/releases/download/v0.6.2/system-upgrade-controller.yaml
+  - https://github.com/rancher/system-upgrade-controller/releases/download/v0.7.6/system-upgrade-controller.yaml
 # resources:
 #   - plan.agent.yaml
 #   - plan.server.yaml
