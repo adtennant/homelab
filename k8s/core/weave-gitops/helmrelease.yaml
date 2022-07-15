@@ -13,7 +13,11 @@ spec:
   interval: 1m0s
   values:
     adminUser:
-      create: false
+      create: true
+      createSecret: false
+      username: weave-gitops
+    image:
+      repository: makkes/wego-app
     ingress:
       enabled: true
       annotations:
@@ -22,7 +26,10 @@ spec:
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
         - host: weave.homelab.adtennant.dev
-          http:
-            paths:
-              - path: /
-                pathType: Prefix
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - weave.homelab.adtennant.dev
+          secretName: weave-tls
