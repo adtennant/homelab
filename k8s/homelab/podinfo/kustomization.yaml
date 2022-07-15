@@ -5,4 +5,5 @@ namespace: podinfo
   - hpa.yaml
   - deployment.yaml
   - ingress.yaml
+  - namespace.yaml
   - service.yaml

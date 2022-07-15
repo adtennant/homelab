@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: speedtest-prometheus
 resources:
   - helmrelease.yaml
+  - namespace.yaml
