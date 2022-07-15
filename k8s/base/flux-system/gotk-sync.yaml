@@ -18,7 +18,7 @@ metadata:
 spec:
   interval: 10m0s
   path: ./k8s/crds
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -31,7 +31,7 @@ metadata:
 spec:
   interval: 10m0s
   path: ./k8s/base
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
