@@ -22,7 +22,6 @@ spec:
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
         - host: weave.homelab.adtennant.dev
-          http:
-            paths:
-              - path: /
-                pathType: Prefix
+          paths:
+            - path: /
+              pathType: Prefix

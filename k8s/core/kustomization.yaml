@@ -9,3 +9,4 @@ resources:
   - prometheus
   - system-upgrade
   - traefik
+  - weave-gitops
