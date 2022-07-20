@@ -6,6 +6,7 @@ metadata:
 spec:
   chart:
     spec:
+      # renovate: registryUrl=https://helm.gitops.weave.works
       chart: weave-gitops
       sourceRef:
         kind: HelmRepository
