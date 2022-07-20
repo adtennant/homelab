@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: metallb-system
 resources:
   # renovate
-  - github.com/metallb/metallb//manifests?ref=v0.13.3
+  - https://raw.githubusercontent.com/metallb/metallb/v0.13.3/config/manifests/metallb-native.yaml
   - ipaddresspool.yaml
   - l2advertisement.yaml
   - secret.enc.yaml
