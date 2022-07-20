@@ -13,7 +13,11 @@ spec:
   interval: 1m0s
   values:
     adminUser:
-      create: false
+      create: true
+      createSecret: false
+      username: weave-gitops
+    image:
+      repository: makkes/wego-app
     ingress:
       enabled: true
       annotations:
@@ -25,3 +29,7 @@ spec:
           paths:
             - path: /
               pathType: Prefix
+      tls:
+        - hosts:
+            - weave.homelab.adtennant.dev
+          secretName: weave-tls
