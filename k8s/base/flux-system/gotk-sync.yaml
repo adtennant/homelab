@@ -10,7 +10,7 @@ spec:
     branch: master
   url: https://github.com/adtennant/homelab
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: crds
@@ -23,7 +23,7 @@ spec:
     kind: GitRepository
     name: homelab
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: base
@@ -36,7 +36,7 @@ spec:
     kind: GitRepository
     name: homelab
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: core
@@ -77,7 +77,7 @@ spec:
     name: homelab
   validation: client
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: homelab
