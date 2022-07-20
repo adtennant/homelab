@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: longhorn-system
 bases:
   # renovate
-  - https://raw.githubusercontent.com/longhorn/longhorn/v1.1.3/deploy/longhorn.yaml
+  - https://raw.githubusercontent.com/longhorn/longhorn/v1.2.4/deploy/longhorn.yaml
 patchesStrategicMerge:
   - configmap.patch.yaml
 resources:
