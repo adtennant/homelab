@@ -12,7 +12,7 @@ Monorepo for my homelab.
 
 - Flash Pis with Rasberian Lite
 - Grant Pis static IPs (done in router settings based on MAC address so they persist between flashes)
-- ansible-playbook ansible/site.yml --ask-pass -i ansible/cluster --extra-vars "gpg_secret_key='$(gpg --export-secret-keys --armor "37C23DD5B51CB2EC4563E984F73FEEB5DD741796")'"
+- ansible-playbook ansible/site.yml --ask-pass -i ansible/cluster --extra-vars "gpg_secret_key='$(gpg --export-secret-keys --armor "8858948C94A7459AB04B59D37BCE1C5040D2EEE4")'"
 - scp pi@192.168.50.200:~/.kube/config ~/.kube/homelab
 - Profit
 

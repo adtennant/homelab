@@ -5,6 +5,3 @@ namespace: system-upgrade
 bases:
   # renovate
   - https://github.com/rancher/system-upgrade-controller/releases/download/v0.9.1/system-upgrade-controller.yaml
-resources:
-  - plan.agent.yaml
-  - plan.server.yaml

@@ -3,7 +3,6 @@ apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
   name: agent-plan
-  namespace: system-upgrade
 spec:
   channel: https://update.k3s.io/v1-release/channels/stable
   concurrency: 1
