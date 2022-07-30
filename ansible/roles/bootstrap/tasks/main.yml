@@ -1,14 +1,14 @@
 ---
-- name: Install FluxCD
+- name: Install ArgoCD
   shell:
-    cmd: kubectl apply -f https://raw.githubusercontent.com/adtennant/homelab/master/k8s/base/flux-system/gotk-components.yaml
+    cmd: kustomize build "github.com/adtennant/homelab/k8s/argocd?ref=argocd" | kubectl apply -f -
 
-- name: Bootstrap homelab
-  shell:
-    cmd: kubectl apply -f https://raw.githubusercontent.com/adtennant/homelab/master/k8s/base/flux-system/gotk-sync.yaml
-
-- name: Configure in-cluster secrets decryption
+- name: Import SOPS GPG key
   shell:
     cmd: echo "{{ gpg_secret_key }}" | kubectl create secret generic sops-gpg
-      --namespace=flux-system
+      --namespace=argocd
       --from-file=sops.asc=/dev/stdin
+
+- name: Bootstrap Homelab
+  shell:
+    cmd: kubectl apply -f https://raw.githubusercontent.com/adtennant/homelab/argocd/k8s/apps/homelab.yaml

@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      volumes:
+        - name: gnupg
+          emptyDir: {}
+        - name: sops-gpg
+          secret:
+            secretName: sops-gpg
+      initContainers:
+        - name: import-gpg-key
+          image: quay.io/argoproj/argocd:v2.4.8
+          command: ["/bin/sh", "-c"]
+          args:
+            - echo "Importing GPG key...";
+              gpg --import /sops-gpg/sops.asc;
+              echo "Done.";
+          env:
+            - name: GNUPGHOME
+              value: /home/argocd/.gnupg
+          volumeMounts:
+            - name: gnupg
+              mountPath: /home/argocd/.gnupg
+            - name: sops-gpg
+              mountPath: /sops-gpg
+              readOnly: true
+      containers:
+        - name: argocd-repo-server
+          env:
+            - name: GNUPGHOME
+              value: /home/argocd/.gnupg
+          volumeMounts:
+            - name: gnupg
+              mountPath: /home/argocd/.gnupg

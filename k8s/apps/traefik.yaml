@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://helm.traefik.io/traefik
+    targetRevision: 10.24.0
+    chart: traefik
+    helm:
+      values: |
+        logs:
+          access:
+            enabled: true
+        providers:
+          kubernetesIngress:
+            publishedService:
+              enabled: true
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
