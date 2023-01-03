@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+  labels:
+    app: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home-assistant
+  template:
+    metadata:
+      labels:
+        app: home-assistant
+    spec:
+      containers:
+        - name: home-assistant
+          image: homeassistant/home-assistant
+          ports:
+            - containerPort: 8123
+          volumeMounts:
+            - name: storage
+              mountPath: "/config"
+            - name: config
+              mountPath: "/config/configuration.yaml"
+              subPath: "configuration.yaml"
+      volumes:
+        - name: config
+          secret:
+            secretName: home-assistant
+            defaultMode: 0777
+        - name: storage
+          persistentVolumeClaim:
+            claimName: home-assistant
