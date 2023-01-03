@@ -14,7 +14,7 @@ spec:
             secretName: sops-gpg
       initContainers:
         - name: import-gpg-key
-          image: quay.io/argoproj/argocd:v2.4.8
+          image: quay.io/argoproj/argocd:v2.5.5
           command: ["/bin/sh", "-c"]
           args:
             - echo "Importing GPG key...";
