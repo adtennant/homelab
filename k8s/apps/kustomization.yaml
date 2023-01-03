@@ -7,5 +7,6 @@ resources:
   - cert-manager.yaml
   - external-dns.yaml
   - home-assistant.yaml
+  - longhorn.yaml
   - metallb.yaml
   - traefik.yaml
