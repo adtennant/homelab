@@ -9,4 +9,5 @@ resources:
   - home-assistant.yaml
   - longhorn.yaml
   - metallb.yaml
+  - system-upgrade.yaml
   - traefik.yaml
