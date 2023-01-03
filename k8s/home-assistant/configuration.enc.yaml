@@ -1,0 +1,50 @@
+homeassistant:
+    name: Home
+    latitude: 51.43547588639194
+    longitude: -2.6010285604422636
+    elevation: 13
+    unit_system: metric
+    currency: GBP
+    country: GB
+    time_zone: Europe/London
+    external_url: https://home-assistant.homelab.adtennant.dev
+default_config: null
+http:
+    server_host: 0.0.0.0
+    ip_ban_enabled: true
+    login_attempts_threshold: 5
+    use_x_forwarded_for: true
+    trusted_proxies:
+        - 10.42.0.0/16
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2023-01-04T22:21:43Z"
+    mac: ENC[AES256_GCM,data:1avKJjqxJhn+nYwRd1qhAj/tNVcbbT1Y4VOtzYRVchCBbIkHntDEyzKCnq3tdjns4WtOcnj0tvktJxi8B7bTSulbpFm9V/TTAS8CA8Sqf0qnra+iTAjkraJ4dC5ebYURoFe6lE8M+giDmM87SqHICa67KT/ML86dclLsBhH4MLo=,iv:JjWFtiYYMYxljgGp16oxfoHULrJ0PeoltCWeJ4HPIRQ=,tag:GFVsAy7QW6T8P18Zq/fe4g==,type:str]
+    pgp:
+        - created_at: "2023-01-04T22:21:42Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0Zy+lejmH90ARAAr48dplP8djIlpLWQWXOu/vgW2OWwyU1OXzs9nw64sGPh
+            930K09cp3vCCNgHeyhCW5H7/vXeVDJaa5zxQPfe0noUJthRLlqEEC/rgIYwhcbd2
+            fvLlSUHAQfCuiIe4YH1c4T4GLVUOVDUfN7LKxDuVlMKvJdVx/LC1ofvPUpZV2S1f
+            1JyLz2kCxRkw254JCvlIp/ws5zVHOJoHqhCBPo4hU7ERgFNC7IK/4e532qpjTIyr
+            AILdqkNOheWLF5Q11pmfrX8HDNTfvNOOFxYaStmnQdVwvWobPjzz4IRKVLDBC4VQ
+            Re/9bTPrhEs2nqGE+tevb+YlkUCHZkc040uy3NlzZeZTS+LrTHqsdfeC7oFu1U8P
+            c/D9iAemNCSjtWe406xNSrAUvdMftz7Zy+toGOR5gmb3+ogz9Cl8DXxf4KGiZj/W
+            sKa3C8kjESX01hSSWajc5qUOwJBjz/wl2nw8AKWamlm83BfwYI/YIOz7hu9E7qhP
+            sgb+aEN0aOpvtgN1M1N7WDWEzSxmi1zoPIWEa9w8JtBBH5i4jtPDLFt5Dn0hzyck
+            O/d9zQIdo3vC7qk1E9seZNi/WlPMbNfNE6cc4jO1Q1VJioMSz4Xltk5ikVxD6A+1
+            6mOc3fClxpZkzJ1cEJvpXT5bcSPZc1xXwyAY9iUcZKklOsif4vKnqTLR8LWxsWDU
+            aAEJAhBGcfAWCJ+5gf881LM4pp1+GqKOZEwzaMbYDNqxfNKy6jt4xcjWTm518zuJ
+            xbUsjPAY7WE0mpiJQ9SlGmTtaEzwbkBySShSjnIiooJ1jY2IVbY/2PwVti5jBbX9
+            /8vhgnYvh1kY
+            =D/ZH
+            -----END PGP MESSAGE-----
+          fp: 8858948C94A7459AB04B59D37BCE1C5040D2EEE4
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

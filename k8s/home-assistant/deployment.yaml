@@ -7,6 +7,8 @@ metadata:
     app: home-assistant
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: home-assistant
@@ -17,9 +19,11 @@ spec:
     spec:
       containers:
         - name: home-assistant
-          image: homeassistant/home-assistant
+          image: homeassistant/home-assistant:stable
           ports:
-            - containerPort: 8123
+            - name: http
+              containerPort: 8123
+              protocol: TCP
           volumeMounts:
             - name: storage
               mountPath: "/config"
