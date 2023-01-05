@@ -1,0 +1,109 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: homelab
+  namespace: flux-system
+spec:
+  interval: 10m
+  ref:
+    branch: master
+  url: https://github.com/adtennant/homelab
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./k8s/flux-system
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: infrastructure
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+      kind: HelmRelease
+      name: cert-manager
+      namespace: cert-manager
+    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+      kind: HelmRelease
+      name: external-dns
+      namespace: external-dns
+    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+      kind: HelmRelease
+      name: longhorn
+      namespace: longhorn-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: controller
+      namespace: metallb-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: system-upgrade-controller
+      namespace: system-upgrade
+    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+      kind: HelmRelease
+      name: traefik
+      namespace: traefik
+  interval: 10m
+  path: ./k8s/infrastructure
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  validation: client
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: infrastructure
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+  interval: 10m
+  path: ./k8s/config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  validation: client
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: apps
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: infrastructure
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+  interval: 10m
+  path: ./k8s/apps
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  validation: client

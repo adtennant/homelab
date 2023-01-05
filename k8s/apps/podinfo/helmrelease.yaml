@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: podinfo
+      # renovate: registryUrl=https://stefanprodan.github.io/podinfo
+      version: 6.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: podinfo
+        namespace: podinfo
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/tls-acme: "true"
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+      hosts:
+        - host: podinfo.homelab.adtennant.dev
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - podinfo.homelab.adtennant.dev
+          secretName: podinfo-tls
