@@ -2,6 +2,7 @@
 ignore: |
   *.enc.yaml
   k8s/base/flux-system/gotk-components.yaml
+  k8s/flux-system/gotk-components.yaml
 
 extends: default
 
