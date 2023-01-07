@@ -14,6 +14,8 @@ spec:
         name: mojo2600
         namespace: pihole
   values:
+    DNS1: 1.1.1.1
+    DNS2: 1.0.0.1
     ingress:
       enabled: true
       annotations:
@@ -21,7 +23,7 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
-        - host: pihole.homelab.adtennant.dev
+        - pihole.homelab.adtennant.dev
       tls:
         - hosts:
             - pihole.homelab.adtennant.dev
@@ -34,6 +36,7 @@ spec:
       nameservers:
         - 127.0.0.1
         - 1.1.1.1
+        - 1.0.0.1
     serviceDns:
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
