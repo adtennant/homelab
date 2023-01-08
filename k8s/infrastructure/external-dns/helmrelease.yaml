@@ -14,20 +14,10 @@ spec:
         name: external-dns
         namespace: external-dns
   values:
+    env:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-api-token
+            key: CF_API_TOKEN
     provider: cloudflare
-  postRenderers:
-    - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: apps/v1
-            kind: Deployment
-            metadata:
-              name: external-dns
-              namespace: external-dns
-            spec:
-              template:
-                spec:
-                  containers:
-                    - name: external-dns
-                      envFrom:
-                        - secretRef:
-                            name: cloudflare-api-token
