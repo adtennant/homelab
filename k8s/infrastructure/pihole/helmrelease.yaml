@@ -19,15 +19,9 @@ spec:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/tls-acme: "true"
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.entrypoints: web
       hosts:
-        - pihole.homelab.adtennant.dev
-      tls:
-        - hosts:
-            - pihole.homelab.adtennant.dev
-          secretName: pihole-tls
+        - pihole.homelab.local
     persistentVolumeClaim:
       enabled: true
     podDnsConfig:

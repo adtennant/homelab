@@ -17,9 +17,5 @@ spec:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/tls-acme: "true"
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: "true"
-      host: longhorn.homelab.adtennant.dev
-      tls: true
-      tlsSecret: longhorn-tls
+        traefik.ingress.kubernetes.io/router.entrypoints: web
+      host: longhorn.homelab.local

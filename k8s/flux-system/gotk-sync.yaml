@@ -40,9 +40,17 @@ spec:
       kind: HelmRelease
       name: cert-manager
       namespace: cert-manager
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: cloudflare-ddns
+      namespace: cloudflare-ddns
     - apiVersion: helm.toolkit.fluxcd.io/v1beta1
       kind: HelmRelease
-      name: external-dns
+      name: external-dns-internal
+      namespace: external-dns
+    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+      kind: HelmRelease
+      name: external-dns-public
       namespace: external-dns
     - apiVersion: helm.toolkit.fluxcd.io/v1beta1
       kind: HelmRelease
@@ -52,6 +60,10 @@ spec:
       kind: Deployment
       name: controller
       namespace: metallb-system
+    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+      kind: HelmRelease
+      name: pihole
+      namespace: pihole
     - apiVersion: apps/v1
       kind: Deployment
       name: system-upgrade-controller

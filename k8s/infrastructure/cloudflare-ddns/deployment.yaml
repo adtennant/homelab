@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudflate-ddns
+  name: cloudflare-ddns
 spec:
   selector:
     matchLabels:
-      app: cloudflate-ddns
+      app: cloudflare-ddns
   template:
     metadata:
       labels:
-        app: cloudflate-ddns
+        app: cloudflare-ddns
     spec:
       containers:
-        - name: cloudflate-ddns
+        - name: cloudflare-ddns
           image: favonia/cloudflare-ddns:latest
           resources:
             limits:
