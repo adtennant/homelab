@@ -20,4 +20,7 @@ spec:
           secretKeyRef:
             name: cloudflare-api-token
             key: CF_API_TOKEN
+    extraArgs:
+      - --cloudflare-proxied
+    policy: sync
     provider: cloudflare
