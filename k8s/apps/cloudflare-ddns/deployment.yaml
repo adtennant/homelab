@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflate-ddns
+spec:
+  selector:
+    matchLabels:
+      app: cloudflate-ddns
+  template:
+    metadata:
+      labels:
+        app: cloudflate-ddns
+    spec:
+      containers:
+        - name: cloudflate-ddns
+          image: favonia/cloudflare-ddns:latest
+          resources:
+            limits:
+              memory: "32Mi"
+              cpu: "50m"
+          env:
+            - name: CF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-api-token
+                  key: CF_API_TOKEN
+            - name: DOMAINS
+              value: ddns.adtennant.dev
+            - name: IP6_PROVIDER
+              value: none
+            - name: PROXIED
+              value: "true"
