@@ -20,6 +20,7 @@ spec:
       enabled: true
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: web
+        traefik.ingress.kubernetes.io/router.middlewares: pihole-redirect@kubernetescrd
       hosts:
         - pihole.homelab.local
     persistentVolumeClaim:

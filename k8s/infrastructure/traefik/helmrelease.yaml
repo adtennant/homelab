@@ -24,7 +24,7 @@ spec:
         enabled: true
     providers:
       kubernetesCRD:
-        enabled: false
+        enabled: true
       kubernetesIngress:
         publishedService:
           enabled: true

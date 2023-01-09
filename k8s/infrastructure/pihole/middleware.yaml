@@ -1,0 +1,9 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect
+spec:
+  redirectRegex:
+    regex: ^http://pihole.homelab.local/$
+    replacement: http://pihole.homelab.local/admin/
