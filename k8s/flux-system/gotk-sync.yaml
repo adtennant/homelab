@@ -1,5 +1,5 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: homelab
@@ -10,7 +10,7 @@ spec:
     branch: master
   url: https://github.com/adtennant/homelab
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: flux-system
@@ -23,7 +23,7 @@ spec:
     kind: GitRepository
     name: homelab
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: infrastructure
@@ -36,7 +36,7 @@ spec:
     secretRef:
       name: sops-gpg
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: cert-manager
       namespace: cert-manager
@@ -44,15 +44,15 @@ spec:
       kind: Deployment
       name: cloudflare-ddns
       namespace: cloudflare-ddns
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: external-dns-internal
       namespace: external-dns
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: external-dns-public
       namespace: external-dns
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: longhorn
       namespace: longhorn-system
@@ -60,7 +60,7 @@ spec:
       kind: Deployment
       name: controller
       namespace: metallb-system
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: pihole
       namespace: pihole
@@ -68,7 +68,7 @@ spec:
       kind: Deployment
       name: system-upgrade-controller
       namespace: system-upgrade
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: traefik
       namespace: traefik
@@ -78,7 +78,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  validation: client
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -98,9 +97,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  validation: client
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: apps
@@ -118,4 +116,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  validation: client
