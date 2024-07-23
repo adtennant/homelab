@@ -1,0 +1,17 @@
+users:
+  - login: alex
+    name: Alex Tennant
+    directory: /Users/alex
+    shell: /bin/zsh
+  - login: eclair
+    name: Eclair
+    directory: /Users/eclair
+    shell: /bin/kitty
+  - login: elmo
+    name: Elmo
+    directory: /Users/elmo
+    shell: /bin/kitty
+  - login: marble
+    name: Marble
+    directory: /Users/marble
+    shell: /bin/kitty
