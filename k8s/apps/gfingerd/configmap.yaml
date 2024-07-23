@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gfingerd
+data:
+  config.yaml: |
+    users:
+      - login: alex
+        name: Alex Tennant
+        directory: /Users/alex
+        shell: /bin/zsh
