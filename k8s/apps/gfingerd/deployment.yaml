@@ -24,9 +24,16 @@ spec:
           ports:
             - name: finger
               containerPort: 79
+          resources:
+            limits:
+              memory: "32Mi"
+              cpu: "50m"
           volumeMounts:
             - name: config
               mountPath: /etc/gfingerd/config
+              readOnly: true
+            - name: home
+              mountPath: /home/nonroot
               readOnly: true
       volumes:
         - name: config
@@ -35,3 +42,8 @@ spec:
             items:
               - key: config.yaml
                 path: config.yaml
+        - name: home
+          nfs:
+            server: magical-box.local
+            path: /homelab
+            readOnly: true
