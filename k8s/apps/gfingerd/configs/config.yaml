@@ -3,6 +3,8 @@ users:
     name: Alex Tennant
     directory: /Users/alex
     shell: /bin/zsh
+    project: /home/nonroot/.project
+    plan: /home/nonroot/.plan
   - login: eclair
     name: Eclair
     directory: /Users/eclair
