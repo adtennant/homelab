@@ -45,5 +45,5 @@ spec:
         - name: home
           nfs:
             server: magical-box.local
-            path: /homelab
+            path: /volume1/homelab
             readOnly: true
