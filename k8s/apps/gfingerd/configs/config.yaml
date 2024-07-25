@@ -3,6 +3,8 @@ entries:
     realName: Alex Tennant
     directory: /Users/alex
     shell: /bin/zsh
+    pgpKey:
+      path: /home/nonroot/.pgpkey
     plan:
       path: /home/nonroot/.plan
     where:
