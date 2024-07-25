@@ -1,20 +1,30 @@
-users:
-  - login: alex
-    name: Alex Tennant
+entries:
+  - name: alex
+    realName: Alex Tennant
     directory: /Users/alex
     shell: /bin/zsh
-    last_login:
-      stat: /home/nonroot/.plan
-    plan: /home/nonroot/.plan
-  - login: eclair
-    name: Eclair
+    plan:
+      path: /home/nonroot/.plan
+    where:
+      - info: LastLogin
+        loginAt:
+          mtime: /home/nonroot/.plan
+        tty: console
+  - name: eclair
+    realName: Eclair
     directory: /Users/eclair
     shell: /bin/kitty
-  - login: elmo
-    name: Elmo
+    where:
+      - info: LastLogin
+  - name: elmo
+    realName: Elmo
     directory: /Users/elmo
     shell: /bin/kitty
-  - login: marble
-    name: Marble
+    where:
+      - info: LastLogin
+  - name: marble
+    realName: Marble
     directory: /Users/marble
     shell: /bin/kitty
+    where:
+      - info: LastLogin

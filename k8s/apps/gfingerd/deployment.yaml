@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: gfinderg
-          image: ghcr.io/adtennant/gfingerd:v0.1.2
+          image: ghcr.io/adtennant/gfingerd:v0.2.0
           args:
             - --config
             - /etc/gfingerd/config/config.yaml
