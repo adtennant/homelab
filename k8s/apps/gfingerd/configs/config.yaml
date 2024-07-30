@@ -10,7 +10,7 @@ entries:
     where:
       - info: LastLogin
         loginAt:
-          mtime: /home/nonroot/.plan
+          modTime: /home/nonroot/.plan
         tty: console
   - name: eclair
     realName: Eclair
