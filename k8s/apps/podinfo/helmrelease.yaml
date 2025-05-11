@@ -16,12 +16,10 @@ spec:
   values:
     ingress:
       enabled: true
-      className: tailscale
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: web
       hosts:
-        - host: podinfo
+        - host: podinfo.homelab.local
           paths:
             - path: /
               pathType: Prefix
-      tls:
-        - hosts:
-            - podinfo

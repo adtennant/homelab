@@ -17,10 +17,12 @@ spec:
     spec:
       containers:
         - name: gfinderg
-          image: ghcr.io/adtennant/gfingerd:v0.3.0
+          image: ghcr.io/adtennant/gfingerd:v0.3.1
           args:
             - --config
             - /etc/gfingerd/config/config.yaml
+            - --port
+            - "79"
           ports:
             - name: finger
               containerPort: 79

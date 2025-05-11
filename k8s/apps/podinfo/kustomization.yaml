@@ -5,4 +5,5 @@ namespace: podinfo
 resources:
   - helmrelease.yaml
   - helmrepository.yaml
+  - ingress.yaml
   - namespace.yaml

@@ -9,5 +9,4 @@ resources:
   - metallb
   - pihole
   - system-upgrade
-  - tailscale
   - traefik

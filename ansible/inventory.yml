@@ -1,0 +1,29 @@
+---
+k3s_cluster:
+  children:
+    server:
+      hosts:
+        192.168.50.200:
+          hostname: homelab-server
+    agent:
+      hosts:
+        192.168.50.201:
+          hostname: homelab-agent-1
+        192.168.50.202:
+          hostname: homelab-agent-2
+        192.168.50.203:
+          hostname: homelab-agent-3
+
+  # Required Vars
+  vars:
+    ansible_port: 22
+    ansible_user: pi
+    k3s_version: v1.30.2+k3s1
+    api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+
+    # Optional vars
+    extra_server_args: >
+      --disable local-storage
+      --disable servicelb
+      --disable traefik
+      --node-taint "node-role.kubernetes.io/master=true:NoSchedule"
