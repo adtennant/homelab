@@ -7,7 +7,5 @@ resources:
   - external-dns
   - longhorn
   - metallb
-  - pihole
   - system-upgrade
-  - tailscale
   - traefik
