@@ -2,17 +2,15 @@
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: server-plan
+  name: k3s-server
 spec:
   channel: https://update.k3s.io/v1-release/channels/stable
   concurrency: 1
   cordon: true
   nodeSelector:
     matchExpressions:
-      - key: node-role.kubernetes.io/master
-        operator: In
-        values:
-          - "true"
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
   serviceAccountName: system-upgrade
   tolerations:
     - key: node-role.kubernetes.io/master

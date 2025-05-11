@@ -12,9 +12,9 @@
     - role: prereq
     - role: crontab
 
-- import_playbook: k3s-ansible/site.yml
+- import_playbook: k3s.orchestration.site
 
-- hosts: master
+- hosts: server
   gather_facts: yes
   become: yes
   roles:
