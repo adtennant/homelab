@@ -1,0 +1,69 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dex
+spec:
+  chart:
+    spec:
+      chart: dex
+      version: 0.23.0
+      sourceRef:
+        kind: HelmRepository
+        name: dex
+  interval: 5m
+  values:
+    config:
+      issuer: https://dex.adtennant.dev
+      storage:
+        type: kubernetes
+        config:
+          inCluster: true
+      oauth2:
+        skipApprovalScreen: true
+      connectors:
+        - type: google
+          id: google
+          name: Google
+          config:
+            clientID: $GOOGLE_CLIENT_ID
+            clientSecret: $GOOGLE_CLIENT_SECRET
+            redirectURI: https://dex.adtennant.dev/callback
+            promptType: ""
+            hostedDomains:
+              - adtennant.dev
+      staticClients:
+        - id: headlamp
+          name: Headlamp
+          redirectURIs:
+            - https://headlamp.adtennant.dev/oidc-callback
+          secretEnv: HEADLAMP_CLIENT_SECRET
+        - id: kubernetes
+          name: Kubernetes
+          redirectURIs:
+            - http://localhost:8000
+            - http://localhost:18000
+            - https://headlamp.adtennant.dev/oidc-callback
+          secretEnv: KUBERNETES_CLIENT_SECRET
+          trustedPeers:
+            - headlamp
+    envFrom:
+      - secretRef:
+          name: google-credentials
+      - secretRef:
+          name: headlamp-client-secret
+      - secretRef:
+          name: kubernetes-client-secret
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+        - host: dex.adtennant.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - dex.adtennant.dev
+          secretName: dex-tls

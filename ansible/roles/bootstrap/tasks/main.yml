@@ -12,3 +12,4 @@
     cmd: echo "{{ gpg_secret_key }}" | kubectl create secret generic sops-gpg
       --namespace=flux-system
       --from-file=sops.asc=/dev/stdin
+      --dry-run=client -o yaml | kubectl apply -f -
