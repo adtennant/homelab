@@ -6,9 +6,10 @@ metadata:
     app: jellyfin
   name: jellyfin
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: jellyfin
+  externalTrafficPolicy: Local
   ports:
     - name: web
       port: 8096
