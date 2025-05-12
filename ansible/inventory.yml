@@ -27,3 +27,10 @@ k3s_cluster:
       --disable servicelb
       --disable traefik
       --node-taint "node-role.kubernetes.io/master=true:NoSchedule"
+
+    server_config_yaml: |
+      kube-apiserver-arg:
+        - "authorization-mode=Node,RBAC"
+        - "oidc-issuer-url=https://dex.adtennant.dev"
+        - "oidc-username-claim=email"
+        - "oidc-client-id=kubernetes"
