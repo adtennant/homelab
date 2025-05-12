@@ -1,0 +1,36 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dex
+spec:
+  chart:
+    spec:
+      chart: dex
+      sourceRef:
+        kind: HelmRepository
+        name: dex
+  interval: 5m
+  values:
+    config:
+      issuer: <YOUR-DEX-URL>
+      storage:
+        type: sqlite3
+      web:
+        http: 0.0.0.0:5556
+      staticClients:
+        - id: example-app
+          redirectURIs:
+            - "http://localhost:8000"
+          name: "Example App"
+          secret: ZXhhbXBsZS1hcHAtc2VjcmV0
+      connectors:
+        - type: mockCallback
+          id: mock
+          name: Example
+      enablePasswordDB: true
+      staticPasswords:
+        - email: "admin@example.com"
+          hash: "$2a$10$2b2cU8CPhOTaGrs1HRQuAueS7JTT5ZHsHSzYiFPm1leZck7Mc8T4W"
+          username: "admin"
+          userID: "08a8684b-db88-4b73-90a9-3cd1661f5466"
