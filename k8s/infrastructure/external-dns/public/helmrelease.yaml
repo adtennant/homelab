@@ -24,7 +24,7 @@ spec:
             name: cloudflare-api-token
             key: CF_API_TOKEN
     extraArgs:
-      # - --cloudflare-proxied
+      - --cloudflare-proxied
       - --default-targets=adtennant.dev
     policy: sync
     provider: cloudflare
