@@ -30,4 +30,4 @@ spec:
             - name: IP6_PROVIDER
               value: none
             - name: PROXIED
-              value: "true"
+              value: "false"
