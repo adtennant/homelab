@@ -2,16 +2,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jellyfin
+  name: podinfo-tailscale
 spec:
+  ingressClassName: tailscale
   rules:
-    - host: jellyfin.homelab.local
+    - host: podinfo
       http:
         paths:
           - backend:
               service:
-                name: jellyfin
+                name: podinfo
                 port:
-                  number: 8096
+                  name: http
             path: /
             pathType: Prefix
+  tls:
+    - hosts:
+        - podinfo

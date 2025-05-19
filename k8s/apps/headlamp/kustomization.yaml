@@ -5,5 +5,6 @@ namespace: headlamp
 resources:
   - helmrelease.yaml
   - helmrepository.yaml
+  - ingress-tailscale.yaml
   - namespace.yaml
   - secret.enc.yaml

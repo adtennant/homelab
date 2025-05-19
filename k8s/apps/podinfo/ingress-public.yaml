@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: podinfo-public
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+    - host: podinfo.adtennant.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: podinfo
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - podinfo.adtennant.dev
+      secretName: podinfo-tls
