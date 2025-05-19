@@ -22,14 +22,8 @@ spec:
           name: oidc
     ingress:
       enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-        - host: headlamp.adtennant.dev
+        - host: headlamp.homelab.local
           paths:
             - path: /
               type: ImplementationSpecific
-      tls:
-        - hosts:
-            - headlamp.adtennant.dev
-          secretName: headlamp-tls
