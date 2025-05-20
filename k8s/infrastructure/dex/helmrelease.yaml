@@ -37,6 +37,7 @@ spec:
           name: Headlamp
           redirectURIs:
             - http://headlamp.homelab.local/oidc-callback
+            - https://headlamp.tail02ee65.ts.net/oidc-callback
           secretEnv: HEADLAMP_CLIENT_SECRET
         - id: kubernetes
           name: Kubernetes
