@@ -1,0 +1,27 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: dashboard
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kubernetes-dashboard
+      version: 7.12.0
+      sourceRef:
+        kind: HelmRepository
+        name: kubernetes-dashboard
+        namespace: dashboard
+  values:
+    app:
+      ingress:
+        enabled: true
+        hosts:
+          - dashboard.homelab.local
+        useDefaultAnnotations: false
+        useDefaultIngressClass: true
+    web:
+      args:
+        - --enable-skip-login
+        - --disable-settings-authorizer
