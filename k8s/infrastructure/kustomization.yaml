@@ -6,7 +6,7 @@ resources:
   - cloudflare-ddns
   - dex
   - external-dns
-  - longhorn
+  # - longhorn
   - metallb
   - pihole
   - prometheus
