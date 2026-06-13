@@ -13,7 +13,7 @@ spec:
         operator: Exists
   serviceAccountName: system-upgrade
   tolerations:
-    - key: node-role.kubernetes.io/master
+    - key: node-role.kubernetes.io/control-plane
       effect: "NoSchedule"
       operator: Equal
       value: "true"
