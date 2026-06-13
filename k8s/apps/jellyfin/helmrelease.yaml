@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: jellyfin
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: jellyfin
+      version: 3.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: jellyfin
+        namespace: jellyfin
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: jellyfin
+            patch: |
+              - op: replace
+                path: /spec/template/spec/volumes/1
+                value:
+                  name: media
+                  nfs:
+                    server: magical-box.local
+                    path: /volume1/video
+                    readOnly: true
+  values:
+    extraVolumes:
+      - name: hwa
+        hostPath:
+          path: /dev/dri
+    extraVolumeMounts:
+      - name: hwa
+        mountPath: /dev/dri
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+        - host: jellyfin.adtennant.dev
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - jellyfin.adtennant.dev
+          secretName: jellyfin-tls
+    persistence:
+      cache:
+        enabled: true
+      media:
+        enabled: false
+    securityContext:
+      capabilities:
+        add:
+          - "SYS_ADMIN"
+        drop:
+          - "ALL"
+      privileged: false
