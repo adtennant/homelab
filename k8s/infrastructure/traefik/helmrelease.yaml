@@ -16,6 +16,8 @@ spec:
   values:
     additionalArguments:
       - --api.insecure=true
+    deployment:
+      kind: DaemonSet
     ingressRoute:
       dashboard:
         enabled: true
@@ -28,3 +30,7 @@ spec:
       kubernetesIngress:
         publishedService:
           enabled: true
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: null
+        maxUnavailable: 1
